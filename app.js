@@ -15,10 +15,8 @@ let allCoins = [];
 let chart = null;
 let currentChartCoin = null;
 
-// Theme on load
 document.body.classList.toggle("dark", localStorage.getItem("theme") === "dark");
 
-// Currency Selector
 currencySelect.value = selectedCurrency;
 currencySelect.addEventListener("change", () => {
   selectedCurrency = currencySelect.value;
@@ -26,13 +24,11 @@ currencySelect.addEventListener("change", () => {
   fetchPrices();
 });
 
-// Dark Mode Toggle
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
 });
 
-// Fetch available coins for autocomplete
 fetch(`${API_BASE}/coins/list`)
   .then(res => res.json())
   .then(data => allCoins = data)
@@ -44,7 +40,6 @@ coinInput.addEventListener("input", () => {
   suggestionsBox.innerHTML = matches.map(c => `<div class="suggestion">${c.id}</div>`).join("");
 });
 
-// Click on suggestion
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("suggestion")) {
     coinInput.value = e.target.textContent;
@@ -52,7 +47,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Add coin on form submit
 coinForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const coin = coinInput.value.trim().toLowerCase();
@@ -67,20 +61,17 @@ coinForm.addEventListener("submit", (e) => {
   suggestionsBox.innerHTML = "";
 });
 
-// Remove a coin
 function removeCoin(coin) {
   trackedCoins = trackedCoins.filter(c => c !== coin);
   localStorage.setItem("coins", JSON.stringify(trackedCoins));
   fetchPrices();
 
-  // Hide chart if it's showing the removed coin
   if (currentChartCoin === coin) {
     chartSection.style.display = "none";
     currentChartCoin = null;
   }
 }
 
-// Fetch live prices
 async function fetchPrices() {
   if (trackedCoins.length === 0) {
     pricesContainer.innerHTML = "<p>No coins being tracked yet.</p>";
@@ -126,7 +117,6 @@ async function fetchPrices() {
         e.stopPropagation();
         const coin = e.target.getAttribute("data-coin");
 
-        // Toggle logic
         if (currentChartCoin === coin && chartSection.style.display === "block") {
           chartSection.style.display = "none";
           currentChartCoin = null;
@@ -143,7 +133,6 @@ async function fetchPrices() {
   }
 }
 
-// Draw live chart
 async function drawChart(coin) {
   try {
     const res = await fetch(`${API_BASE}/coins/${coin}/market_chart?vs_currency=${selectedCurrency}&days=1`);
@@ -178,6 +167,5 @@ async function drawChart(coin) {
   }
 }
 
-// Initial fetch
 fetchPrices();
-setInterval(fetchPrices, 60000); // 60 seconds
+setInterval(fetchPrices, 60000); 
