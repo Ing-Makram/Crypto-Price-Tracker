@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Price Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="app-title">📈 Crypto Price Tracker</h1>
+      <div class="controls">
+        <label for="currencySelect" class="visually-hidden">Currency</label>
+        <select id="currencySelect" aria-label="Select currency">
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+        </select>
+
+        <button id="toggleMode" aria-label="Toggle dark/light theme">🌓 Toggle Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <form id="coinForm" autocomplete="off" class="coin-form">
+        <input 
+          type="text" 
+          id="coinInput" 
+          placeholder="Enter coin name (e.g. bitcoin)" 
+          aria-label="Enter cryptocurrency to track"
+        />
+        <div id="suggestions" class="suggestion-box" aria-live="polite"></div>
+        <button type="submit">➕ Track</button>
+      </form>
+      <p id="error" class="error-message" role="alert"></p>
+    </section>
+
+    <section id="pricesContainer" class="prices-container"></section>
+
+    <section id="chartSection" class="chart-section" style="display: none;">
+      <h2>📊 Live Price Chart</h2>
+      <canvas id="priceChart" aria-label="Live chart of selected cryptocurrency"></canvas>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>&copy; <span id="year"></span> Crypto Tracker by You. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

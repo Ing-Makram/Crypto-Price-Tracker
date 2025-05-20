@@ -1,0 +1,277 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+  padding-bottom: 60px;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header .container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button, select, input[type="text"] {
+  font-family: 'Inter', sans-serif;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background-color: #3cba54;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #2b9348;
+}
+
+body.dark button {
+  color: #fff;
+}
+
+input[type="text"] {
+  flex: 1;
+  width: 100%;
+}
+
+.coin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.suggestion-box {
+  position: relative;
+  border: 1px solid #ccc;
+  background-color: white;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestion-box .suggestion {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestion-box .suggestion:hover {
+  background-color: #eee;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.prices-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.price-card {
+  background-color: white;
+  border-left: 5px solid #3cba54;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-card button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  background-color: crimson;
+  color: white;
+}
+
+.chart-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.chart-section {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #ccc;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Dark mode styles */
+body.dark .header {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #444;
+}
+body.dark .header .app-title {
+  color: #fff;
+}
+body.dark .header .controls button {
+  background-color: #3cba54;
+  color: #fff;
+}
+body.dark .header .controls button:hover {
+  background-color: #2b9348;
+}
+body.dark .coin-form {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+}
+body.dark .coin-form input[type="text"] {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+body.dark .coin-form input[type="text"]::placeholder {
+  color: #aaa;
+}
+body.dark .coin-form .suggestion-box {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+}
+body.dark .coin-form .suggestion-box .suggestion {
+  color: #fff;
+}
+body.dark .coin-form .suggestion-box .suggestion:hover {
+  background-color: #444;
+}
+body.dark .prices-container .price-card {
+  background-color: #1e1e1e;
+  border-left: 5px solid #3cba54;
+}
+body.dark .prices-container .price-card button {
+  background-color: #3cba54;
+  color: #fff;
+}
+body.dark .prices-container .price-card button:hover {
+  background-color: #2b9348;
+}
+body.dark .chart-section {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+body.dark .footer {
+  background-color: #1e1e1e;
+  color: #aaa;
+}
+body.dark .footer a {
+  color: #3cba54;
+}
+body.dark .footer a:hover {
+  color: #2b9348;
+}
+body.dark .footer a:visited {
+  color: #3cba54;
+}
+body.dark .footer a:active {
+  color: #2b9348;
+}
+body.dark .footer a:focus {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus-visible {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus:not(:focus-visible) {
+  outline: none;
+}
+body.dark .footer a:focus-visible:not(:focus) {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus-visible:active {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus-visible:visited {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus-visible:hover {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus-visible:focus {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus-visible:focus-visible {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
+body.dark .footer a:focus-visible:focus-visible:active {
+  outline: 2px solid #3cba54;
+  outline-offset: 2px;
+}
